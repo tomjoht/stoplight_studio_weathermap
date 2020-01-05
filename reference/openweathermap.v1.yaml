@@ -13,8 +13,5 @@ info:
     name: "CC Attribution-ShareAlike 4.0 (CC BY-SA 4.0)"
     url: "https://openweathermap.org/price"
 
-servers:
-- url: "https://api.openweathermap.org/data/2.5"
-
 paths: {}
  
