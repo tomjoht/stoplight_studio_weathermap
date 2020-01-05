@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: openweathermap
+  version: '1.0'
+  description: 'Get the current weather, daily forecast for 16 days, and a three-hour-interval forecast for 5 day.'
+  contact:
+    name: OpenWeatherMap API
+    email: some_email@gmail.com
+    url: 'https://openweathermap.org/api'
+  termsOfService: 'https://openweathermap.org/terms'
+  license:
+    name: CC Attribution-ShareAlike 4.0 (CC BY-SA 4.0)
+    url: 'https://openweathermap.org/price'
+servers:
+  - url: 'http://localhost:3000'
+paths: {}
+components:
+  schemas: {}
