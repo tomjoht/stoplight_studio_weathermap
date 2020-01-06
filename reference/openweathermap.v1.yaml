@@ -23,8 +23,7 @@ paths:
           description: Not Found
       operationId: get-weather
       description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
-      security:
-        - app_id: []
+      security: []
       parameters:
         - schema:
             type: string
@@ -112,10 +111,11 @@ paths:
             **Mode**. *Example: html*. Determines the format of the response. Possible values are `xml` and `html`. If the mode parameter is empty, the format is `json` by default.
 servers:
   - description: ''
-    url: 'https://api.openweathermap.org/data/2.5/'
+    url: 'https://api.openweathermap.org/data/2.5'
 components:
   securitySchemes:
     app_id:
-      name: API Key
+      name: appid
       type: apiKey
       in: query
+      description: "API key to authorize requests. If you don't have an OpenWeatherMap API key, use `fd4698c940c6d1da602a70ac34f0b147`this is a description"
