@@ -11,7 +11,7 @@ this is an article.
 
 4. some options
 
-   * option 1
+
    * option 2
 
 5. list continues
