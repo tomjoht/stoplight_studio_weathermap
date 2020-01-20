@@ -15,7 +15,6 @@ paths:
   /weather:
     get:
       summary: Weather
-      tags: []
       operationId: get-weather
       description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
       parameters:
@@ -273,6 +272,8 @@ paths:
                     id: 0
                     name: Santa Clara
                     cod: 200
+      tags:
+        - Weather endpoints
 servers:
   - url: 'https://api.openweathermap.org/data/2.5'
     description: prod
