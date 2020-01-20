@@ -14,36 +14,32 @@ info:
 paths:
   /weather:
     get:
-      summary: Weather
-      tags:
-        - weather endpoints
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
       operationId: get-weather
       description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
-      security:
-        - app_id: []
       parameters:
         - schema:
             type: string
           in: query
           name: q
-          description: |
-            **City name**. *Example: London*. You can call by city name, or by city name and country code. The API responds with a list of results that match a searching word. For the query value, type the city name and optionally the country code divided by a comma; use ISO 3166 country codes.
+          description: '**City name**. *Example: London*. You can call by city name, or by city name and country code. The API responds with a list of results that match a searching word. For the query value, type the city name and optionally the country code divided by a comma; use ISO 3166 country codes.'
         - schema:
             type: string
           in: query
           name: id
-          description: "**City ID**. *Example: `2172797`*. You can call by city ID. The API responds with the exact result. The List of city IDs can be downloaded [here](http://bulk.openweathermap.org/sample/). You can include multiple cities in this parameter &mdash; just separate them by commas. The limit of locations is 20. *Note: A single ID counts as a one API call. So, if you have city IDs, it's treated as 3 API calls.*"
+          description: '**City ID**. *Example: `2172797`*. You can call by city ID. The API responds with the exact result. The List of city IDs can be downloaded [here](http://bulk.openweathermap.org/sample/). You can include multiple cities in this parameter — just separate them by commas. The limit of locations is 20. *Note: A single ID counts as a one API call. So, if you have city IDs, it’s treated as 3 API calls.*'
         - schema:
             type: string
           in: query
           name: lat
-          description: |
-            **Latitude**. *Example: 35*. The latitude coordinate of the location of your interest. Must use with `lon`.
+          description: '**Latitude**. *Example: 35*. The latitude coordinate of the location of your interest. Must use with `lon`.'
         - schema:
             type: string
           in: query
           name: lon
-          description: '**Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat`.'
+          description: '**Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat `.'
         - schema:
             type: string
           in: query
@@ -51,11 +47,11 @@ paths:
           description: '**Zip code**. Search by zip code. *Example: 95050,us*. Please note that if the country is not specified, the search uses USA as a default.'
         - schema:
             type: string
+            default: standard
             enum:
               - standard
               - metric
               - imperial
-            default: imperial
           in: query
           name: units
           description: '**Units**. *Example: imperial*. Possible values: `standard`, `metric`, and `imperial`. When you do not use the `units` parameter, the format is `standard` by default.'
@@ -101,194 +97,16 @@ paths:
           description: '**Language**. *Example: en*. You can use lang parameter to get the output in your language. We support the following languages that you can use with the corresponded lang values: Arabic - `ar`, Bulgarian - `bg`, Catalan - `ca`, Czech - `cz`, German - `de`, Greek - `el`, English - `en`, Persian (Farsi) - `fa`, Finnish - `fi`, French - `fr`, Galician - `gl`, Croatian - `hr`, Hungarian - `hu`, Italian - `it`, Japanese - `ja`, Korean - `kr`, Latvian - `la`, Lithuanian - `lt`, Macedonian - `mk`, Dutch - `nl`, Polish - `pl`, Portuguese - `pt`, Romanian - `ro`, Russian - `ru`, Swedish - `se`, Slovak - `sk`, Slovenian - `sl`, Spanish - `es`, Turkish - `tr`, Ukrainian - `ua`, Vietnamese - `vi`, Chinese Simplified - `zh_cn`, Chinese Traditional - `zh_tw`.'
         - schema:
             type: string
+            default: json
           in: query
           name: mode
-          description: |
-            **Mode**. *Example: html*. Determines the format of the response. Possible values are `xml` and `html`. If the mode parameter is empty, the format is `json` by default.
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  coord:
-                    type: object
-                    properties:
-                      lon:
-                        type: number
-                      lat:
-                        type: number
-                  weather:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                        main:
-                          type: string
-                        description:
-                          type: string
-                        icon:
-                          type: string
-                  base:
-                    type: string
-                  main:
-                    type: object
-                    properties:
-                      temp:
-                        type: number
-                      feels_like:
-                        type: number
-                      temp_min:
-                        type: number
-                      temp_max:
-                        type: number
-                      pressure:
-                        type: number
-                      humidity:
-                        type: number
-                  visibility:
-                    type: number
-                  wind:
-                    type: object
-                    properties:
-                      speed:
-                        type: number
-                      deg:
-                        type: number
-                  clouds:
-                    type: object
-                    properties:
-                      all:
-                        type: number
-                  dt:
-                    type: number
-                  sys:
-                    type: object
-                    properties:
-                      type:
-                        type: number
-                      id:
-                        type: number
-                      country:
-                        type: string
-                      sunrise:
-                        type: number
-                      sunset:
-                        type: number
-                  timezone:
-                    type: number
-                  id:
-                    type: number
-                  name:
-                    type: string
-                  cod:
-                    type: number
+          description: '**Mode*. *Example: html. Determines the format of the response. Possible values are `xml` and `html`. If the mode parameter is empty, the format is `json` by default.'
 servers:
-  - description: ''
-    url: 'https://api.openweathermap.org/data/2.5'
+  - url: 'https://api.openweathermap.org/data/2.5'
+    description: prod
 components:
   securitySchemes:
     app_id:
       name: appid
       type: apiKey
       in: query
-      description: "API key to authorize requests. If you don't have an OpenWeatherMap API key, use `fd4698c940c6d1da602a70ac34f0b147`this is a description"
-  schemas: {}
-  parameters:
-    q:
-      name: q
-      in: query
-      description: '**City name**. *Example: London*. You can call by city name, or by city name and country code. The API responds with a list of results that match a searching word. For the query value, type the city name and optionally the country code divided by a comma; use ISO 3166 country codes.'
-      schema:
-        type: string
-    id:
-      name: id
-      in: query
-      description: "**City ID**. *Example: `2172797`*. You can call by city ID. The API responds with the exact result. The List of city IDs can be downloaded [here](http://bulk.openweathermap.org/sample/). You can include multiple cities in this parameter &mdash; just separate them by commas. The limit of locations is 20. *Note: A single ID counts as a one API call. So, if you have city IDs, it's treated as 3 API calls.*"
-      schema:
-        type: string
-    lat:
-      name: lat
-      in: query
-      description: '**Latitude**. *Example: 35*. The latitude coordinate of the location of your interest. Must use with `lon`.'
-      schema:
-        type: string
-    lon:
-      name: lon
-      in: query
-      description: '**Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat`.'
-      schema:
-        type: string
-    zip:
-      name: zip
-      in: query
-      description: '**Zip code**. Search by zip code. *Example: 95050,us*. Please note that if the country is not specified, the search uses USA as a default.'
-      schema:
-        type: string
-    units:
-      name: units
-      in: query
-      description: '**Units**. *Example: imperial*. Possible values: `standard`, `metric`, and `imperial`. When you do not use the `units` parameter, the format is `standard` by default.'
-      schema:
-        type: string
-        enum:
-          - standard
-          - metric
-          - imperial
-        default: imperial
-    lang:
-      name: lang
-      in: query
-      description: '**Language**. *Example: en*. You can use lang parameter to get the output in your language. We support the following languages that you can use with the corresponded lang values: Arabic - `ar`, Bulgarian - `bg`, Catalan - `ca`, Czech - `cz`, German - `de`, Greek - `el`, English - `en`, Persian (Farsi) - `fa`, Finnish - `fi`, French - `fr`, Galician - `gl`, Croatian - `hr`, Hungarian - `hu`, Italian - `it`, Japanese - `ja`, Korean - `kr`, Latvian - `la`, Lithuanian - `lt`, Macedonian - `mk`, Dutch - `nl`, Polish - `pl`, Portuguese - `pt`, Romanian - `ro`, Russian - `ru`, Swedish - `se`, Slovak - `sk`, Slovenian - `sl`, Spanish - `es`, Turkish - `tr`, Ukrainian - `ua`, Vietnamese - `vi`, Chinese Simplified - `zh_cn`, Chinese Traditional - `zh_tw`.'
-      schema:
-        type: string
-        enum:
-          - ar
-          - bg
-          - ca
-          - cz
-          - de
-          - el
-          - en
-          - fa
-          - fi
-          - fr
-          - gl
-          - hr
-          - hu
-          - it
-          - ja
-          - kr
-          - la
-          - lt
-          - mk
-          - nl
-          - pl
-          - pt
-          - ro
-          - ru
-          - se
-          - sk
-          - sl
-          - es
-          - tr
-          - ua
-          - vi
-          - zh_cn
-          - zh_tw
-        default: en
-    mode:
-      name: mode
-      in: query
-      description: '**Mode**. *Example: html*. Determines the format of the response. Possible values are `xml` and `html`. If the mode parameter is empty, the format is `json` by default.'
-      schema:
-        type: string
-        enum:
-          - json
-          - xml
-          - html
-        default: json
